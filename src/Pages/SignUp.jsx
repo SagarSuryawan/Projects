@@ -78,8 +78,10 @@ function SignUp() {
 
         const response = await dispatch(createAccount(formData))
         console.log(response)
-        
+
+        if(response?.payload?.success)       
             navigate("/")
+           
         
         // dispatch create account action, considering if action goes well then navigate to home page.
        
@@ -95,7 +97,7 @@ function SignUp() {
 
         // making action for create account which is disapatch 
 
-}
+    }
 
     return(
         <HomeLayout>

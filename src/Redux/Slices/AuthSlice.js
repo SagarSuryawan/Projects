@@ -24,8 +24,28 @@ export const createAccount = createAsyncThunk("auth/signup", async (data) => {
         toast.error(error?.reponse?.data?.message)
     }
 })
-
 // this is a async thunk , it's work like action, but action first ot will resloce it's promise and then action dispatch 
+
+
+// login Action
+
+export const login = createAsyncThunk("auth/login", async (data) => {
+    try {
+
+        const response = axiosInstance.post("/user/signin", data);
+            toast.promise(response, {
+                loading:"Wait ! Authentication in Process",
+                success:(data) => {return data?. data?.message},
+                error:"failed to login"
+            })
+            return (await response).data;        
+    } catch (error) {
+        toast.error(error?.reponse?.data?.message)
+    }
+})
+
+
+
 
 const AuthSlice = createSlice({
     name:'authSlicer',

@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# backend url
+BACKEND_URL = http://localhost:5055/
