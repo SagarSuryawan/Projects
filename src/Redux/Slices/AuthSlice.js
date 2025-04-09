@@ -27,8 +27,8 @@ export const createAccount = createAsyncThunk("auth/signup", async (data) => {
 // this is a async thunk , it's work like action, but action first ot will resloce it's promise and then action dispatch 
 
 
-// login Action
 
+// login Action
 export const login = createAsyncThunk("auth/login", async (data) => {
     try {
 
@@ -45,12 +45,21 @@ export const login = createAsyncThunk("auth/login", async (data) => {
 })
 
 
-
-
 const AuthSlice = createSlice({
     name:'authSlicer',
     initialState,
-    reducers:{}
+    reducers:{},
+    extraReducers:(builder) => {
+        builder.addCase(login.fulfilled, (state, action)=> {
+            localStorage.setItem("data", JSON.stringify(action?.payload?.user));
+            localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("role", action ?. payload?.user?.role);
+            // update state
+            state.isLoggedIn = true;
+            state.data =  action?.payload?.user;
+            state.role = action?.payload?. user?.role;
+        })
+    }
 
 })
 

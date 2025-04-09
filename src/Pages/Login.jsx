@@ -11,7 +11,6 @@ function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    
 
     const [loginData, setLoginData] = useState({
         email:"",
@@ -30,12 +29,11 @@ function Login() {
     
      async function onLogin(event) {
         event.preventDefault()
+
         if(!loginData.email || !loginData.password){
             toast.error("Please fill the all Details")
             return
         }
-
-
 
         const response = await dispatch(login(loginData))
         console.log(response)
@@ -95,7 +93,7 @@ function Login() {
                     Login
                 </button> 
                 <p className='text-center'>
-                    Do not have an account ? 
+                    Don't have an account ? 
                     <Link className = " text-accent cursor-pointer" to = "/signup">Signup</Link>
                 </p>
             </form>
