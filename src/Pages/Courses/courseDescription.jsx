@@ -9,6 +9,7 @@ function CourseDescription() {
     const {state} = useLocation();
     const { role,data } = useSelector((state)=> state.auth);
 
+
     return(
 
         <HomeLayout>
