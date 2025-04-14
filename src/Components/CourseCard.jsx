@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom" 
+import { data, useNavigate } from "react-router-dom" 
 
 
 function CourseCard() {
 
     return(
-        <div onClick={()=>navigate("/course/description/")}
+        <div onClick={()=>navigate("/course/description/",{state:{...data}})}
          className=" text-white w-[22rem] h-[430px] shadow-lg rounded-lg cursor-pointer group overflow-hidden ">
             <div className=" overflow hidden ">
 
