@@ -22,14 +22,14 @@ export const getAllCourses = createAsyncThunk("/course/get", async() => {
     }
 })
 
-export const createCourse = createAsyncThunk("/course/get", async() => {
+export const createCourse = createAsyncThunk("/course/create", async(data) => {
     try {
         const formData = new FormData()
         
         formData.append("title", data?.title)
         formData.append("description", data?.description)
         formData.append("category", data?.category)
-        formData.append("creattedBy", data?.createdBy)
+        formData.append("createdBy", data?.createdBy)
         formData.append("thumbnail", data?.thumbnail)
         formData.append("preveiwImage", data?.preveiwImage)
 
@@ -40,7 +40,7 @@ export const createCourse = createAsyncThunk("/course/get", async() => {
             error:"failed to create course ! try again"
         })
 
-        retrun (await response).data
+        return (await response).data
     } catch (error) {
         toast.error(error?.response?.data?.message)
     }
